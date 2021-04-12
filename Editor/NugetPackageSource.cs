@@ -140,7 +140,9 @@
                 {
                     url = string.Format("{0}&$filter=Version eq '{1}'", url, package.Version);
                 }
-
+                
+                url += "semVerLevel=2.0.0";
+                
                 try
                 {
                     foundPackages = GetPackagesFromUrl(url, UserName, ExpandedPassword);
@@ -264,8 +266,10 @@
             url += "targetFramework=''&";
 
             // should we include prerelease packages?
-            url += string.Format("includePrerelease={0}", includePrerelease.ToString().ToLower());
+            url += string.Format("includePrerelease={0}&", includePrerelease.ToString().ToLower());
 
+            url += "semVerLevel=2.0.0";
+            
             try
             {
                 return GetPackagesFromUrl(url, UserName, ExpandedPassword);
