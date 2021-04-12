@@ -575,11 +575,13 @@
                 // MacOS directory layout
                 Path.Combine(executablePath, "Contents"),
                 // Windows directory layout
-                Path.Combine(Directory.GetParent(executablePath).FullName, "Data")
+                Path.Combine(Directory.GetParent(executablePath).FullName, "Data"),
+                Path.Combine(Application.dataPath, "..")
             };
             var relativePaths = new[] {
                 Path.Combine("NetStandard",  "compat"),
-                Path.Combine("MonoBleedingEdge", "lib", "mono")
+                Path.Combine("MonoBleedingEdge", "lib", "mono"),
+                Path.Combine("Library", "PackageCache")
             };
             var allPossiblePaths = roots
                 .SelectMany(root => relativePaths
